@@ -4,16 +4,23 @@ public:
     void sortColors(vector<int> &nums)
     {
         int n = nums.size();
-        for (int i = 0; i < n - 1; i++)
+        int n0 = 0, n1 = 0, n2 = n - 1;
+        while (n1 <= n2)
         {
-            for (int j = i + 1; j < n; j++)
+            if (nums[n1] == 0)
             {
-                if (nums[j] < nums[i])
-                {
-                    int temp = nums[j];
-                    nums[j] = nums[i];
-                    nums[i] = temp;
-                }
+                swap(nums[n1], nums[n0]);
+                n0++;
+                n1++;
+            }
+            else if (nums[n1] == 1)
+            {
+                n1++;
+            }
+            else if (nums[n1] == 2)
+            {
+                swap(nums[n1], nums[n2]);
+                n2--;
             }
         }
     }

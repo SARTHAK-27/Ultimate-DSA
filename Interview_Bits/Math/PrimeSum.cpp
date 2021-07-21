@@ -14,7 +14,7 @@ vector<int> Solution::primesum(int A)
     }
 
     vector<int> res;
-    for (int i = 0; i <= A / 2; i++)
+    for (int i = 2; i <= A / 2; i++)
     {
         if (!v[i] && !v[A - i])
         {

@@ -1,22 +1,17 @@
 int Solution::hammingDistance(const vector<int> &A)
 {
-    int mod = (int)1e9 + 7;
-    int ans = 0;
-    for (int i = 0; i < 31; i++)
+    long ans = 0, n = A.size();
+    for (int i = 0; i < 32; i++)
     {
-        long long z = 0, o = 0;
-        for (int j = 0; j < A.size(); j++)
+        int c = 0;
+        for (int j = 0; j < n; j++)
         {
-            if ((A[j] >> i) & 1 == 1)
+            if ((A[j] & (1 << i)))
             {
-                o++;
-            }
-            else
-            {
-                z++;
+                c++;
             }
         }
-        ans = (ans + (z * o) % mod) % mod;
+        ans = ans + (c * (n - c) * 2);
     }
-    return (2 * ans) % mod;
+    return ans % 1000000007;
 }
